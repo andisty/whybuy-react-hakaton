@@ -1,4 +1,6 @@
 import React from 'react';
+import $ from 'jquery';
+import Item from './Item';
 
 class ListItems extends React.Component {
   contructor() {
