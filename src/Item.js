@@ -27,10 +27,12 @@ class Item extends React.Component {
       console.log(this.state);
         return (
           <div>
-            {this.state.id}
-            {this.state.name}
-            {this.state.description}
-            {this.state.availability}
+            <ul>
+              <li>{this.state.id}</li>
+              <li>{this.state.name}</li>
+              <li>{this.state.description}</li>
+              <li>{this.state.availability}</li>
+            </ul>
           </div>
         );
     }
