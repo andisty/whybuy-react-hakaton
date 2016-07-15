@@ -1,4 +1,5 @@
 import React from 'react';
+import jQuery from 'jquery';
 
 class Item extends React.Component {
   constructor() {
