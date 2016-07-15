@@ -52,10 +52,10 @@ class Item extends React.Component {
     this.setState(newState);
 
     console.log(newState);
-// adding the new created item to the
+// adding the new created item to the db in json
     jQuery.ajax({
-      type: "PUT",
-      url: `https://fierce-brook-27687.herokuapp.com/items/${this.props.id}.json`,
+      type: "POST",
+      url: `https://fierce-brook-27687.herokuapp.com/items.json`,
       data: JSON.stringify({
           item: newState
       }),
