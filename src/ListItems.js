@@ -3,7 +3,7 @@ import $ from 'jquery';
 import Item from './Item';
 
 class ListItems extends React.Component {
-  contructor() {
+  constructor() {
     super();
 
     this.state = {
@@ -12,9 +12,32 @@ class ListItems extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.loadItems();
+  }
+
+  loadItems() {
+
+    let component = this;
+
+    $.getJSON(`https://fierce-brook-27687.herokuapp.com/items.json`, function(data) {
+      console.log(data);
+
+      component.setState({
+        listItems: data
+      });
+    });
+  }
+
+
   renderListItems(item, index) {
     return (
-      <h2>Items list</h2>
+      <Item
+       key={item.id}
+       id={item.id}
+       name={item.name}
+       description={item.description}
+       />
     );
   }
 
@@ -24,9 +47,9 @@ class ListItems extends React.Component {
 
     return (
       <div>
-        <h1>{name}</h1>
+        <h1>{this.name}</h1>
         <div>
-          {listItems.map(this.renderItem.bind(this))}
+          {listItems.map(this.renderListItems.bind(this))}
         </div>
       </div>
     );
