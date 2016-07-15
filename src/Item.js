@@ -9,7 +9,6 @@ class Item extends React.Component {
       };
     }
 
-
   componentDidMount() {
     this.setState({
       key: this.props.id,
