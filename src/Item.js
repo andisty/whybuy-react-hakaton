@@ -18,9 +18,71 @@ class Item extends React.Component {
       createdAt: this.props.createdAt,
       updatedAt: this.props.updatedAt,
       loading: !!!this.props.id
-
     });
   }
+  // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+  updateItem(newItem) {
+    console.log(newItem);
+    this.syncState({item: newItem});
+  }
+
+  // toggleChecked(event) {
+  //   this.syncState({
+  //     completed: this.refs.completed.checked
+  //   });
+  // }
+
+  syncState(updatedState) {
+    console.log("Syncing state!");
+
+    this.setState({
+      loading: true
+    });
+
+    let component = this;
+
+    let newState = jQuery.extend({
+      id: this.state.id,
+      name: this.state.name,
+      description: this.state.description
+    }, updatedState);
+
+    this.setState(newState);
+
+    console.log(newState);
+
+    jQuery.ajax({
+      type: "PUT",
+      url: `https://fierce-brook-27687.herokuapp.com/items/${this.props.id}.json`,
+      data: JSON.stringify({
+          item: newState
+      }),
+      contentType: "application/json",
+      dataType: "json"
+    })
+
+    .done(function(data) {
+      console.log(data);
+
+      component.setState({
+        id: data.item.id,
+        name: data.item.name,
+        description: data.item.description
+      });
+    })
+
+    .fail(function(error) {
+      console.log(error);
+    })
+
+    .always(function() {
+      component.setState({
+        loading: false
+      });
+      component.props.onChange();
+    });
+}
 
     render() {
       console.log(this.state);
