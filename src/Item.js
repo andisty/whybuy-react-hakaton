@@ -116,14 +116,13 @@ class Item extends React.Component {
     render() {
       console.log(this.state);
         return (
-          <div>
-            <ul>
-              <li>{this.state.id}</li>
-              <li>{this.state.name}</li>
-              <li>{this.state.description}</li>
-              <li>{this.state.availability}</li>
-            </ul>
-          </div>
+          <li>
+            <a href="#" className="destroy pull-right" onClick={this.destroyMe.bind(this)}>x</a>
+            {this.state.id}
+            {this.state.name}
+            {this.state.description}
+
+          </li>
         );
     }
 }

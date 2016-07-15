@@ -44,12 +44,12 @@ class ItemForm extends React.Component {
       <div className="well">
         <form onSubmit={this.createItem.bind(this)}>
           <div className="row">
-            <h1>Todo List Rails-React</h1>
+            <h1>Your item up for grabs</h1>
             <div className="form-group col-xs-10">
-              <input type="text" className="form-control" ref="newTodoInput" placeholder="What needs to be done?" />
+              <input type="text" className="form-control" ref="newItemInput" placeholder="What item you have to offer?" />
             </div>
             <div className="form-group col-xs-2">
-              <button type="submit" className="btn btn-primary">Create</button>
+              <button type="submit" className="btn btn-primary">Add item</button>
             </div>
           </div>
         </form>

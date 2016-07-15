@@ -1,6 +1,7 @@
 import React from 'react';
-import Item from './Item';
 import jQuery from 'jquery';
+import Item from './Item';
+import ItemForm from './ItemForm';
 
 class ItemList extends React.Component {
 
@@ -12,34 +13,36 @@ class ItemList extends React.Component {
     };
   }
 
-  reloadTodos(event) {
+  reloadItems(event) {
   console.log(this.state)
   let component = this;
 
-  jQuery.getJSON(`https://fierce-brook-27687.herokuapp.com/items.json`, function(data) {
+    jQuery.getJSON(`https://fierce-brook-27687.herokuapp.com/items.json`, function(data) {
 
-    component.setState({
-      items: data
+      component.setState({
+        items: data
+      });
     });
-  });
-
-}
+  }
 
   componentDidMount() {
-    this.reloadTodos();
+    this.reloadItems();
   }
 
 
     render() {
       console.log(this.state.items);
         return (
-          <div>
-          {this.state.items.map(function(item) {
-            console.log(item)
-          return(
-            <Item key={item.id} id={item.id} name={item.name} description={item.description} createdAt={item.created_at} updatedAt={item.updated_at} />
-          );
-        }, this)}
+          <div className="item-list">
+            <ItemForm onChange={this.reloadItems.bind(this)} />
+            <ul>
+              {this.state.items.map(function(item) {
+              console.log(item)
+            return(
+              <Item key={item.id} id={item.id} name={item.name} description={item.description} createdAt={item.created_at} updatedAt={item.updated_at} />
+            );
+          }, this)}
+            </ul>
           </div>
         );
     }
