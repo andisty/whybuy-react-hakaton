@@ -1,7 +1,7 @@
 import React from 'react';
 import ItemList from './ItemList';
 
-const API_URL = "https://fierce-brook-27687.herokuapp.com/items.json"
+const API_URL = "localhost:3030/items.json"
 
 class App extends React.Component {
     render() {
