@@ -130,7 +130,7 @@ class Item extends React.Component {
             </div>
            <div className="card-action">
              <a href="#">This is a link</a>
-             <a href="#" className="destroy pull-right" onClick={this.destroyMe.bind(this)}>Cancel Item</a>
+             <a href="#" className="destroy pull-right" onClick={this.onDestroy.bind(this)}>Cancel Item</a>
            </div>
          </div>
        </div>
