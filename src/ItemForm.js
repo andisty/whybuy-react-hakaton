@@ -11,7 +11,8 @@ class ItemForm extends React.Component {
 
     let component = this;
     let name = this.refs.newItemInput.value;
-    let description = this.refs.newItemDescription;
+    let description = this.refs.newItemDescription.value;
+    console.log(description)
     let newItem = {
       id: null,
       name: name,
@@ -19,14 +20,18 @@ class ItemForm extends React.Component {
     };
 
     jQuery.ajax({
-      type: "POST",
-      url: `https://fierce-brook-27687.herokuapp.com/items.json`,
-      data: JSON.stringify({
-          item: newItem
-      }),
-      contentType: "application/json",
-      dataType: "json"
-    })
+       type: "POST",
+       url: "https://fierce-brook-27687.herokuapp.com/items.json",
+       data: JSON.stringify({
+           item: {
+             id: null,
+             name: newItem.name,
+             description: newItem.description
+           }
+       }),
+       contentType: "application/json",
+       dataType: "json"
+   })
 
     .done(function(data) {
       component.props.onChange();
