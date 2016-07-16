@@ -55,7 +55,7 @@ class Item extends React.Component {
 // adding the new created item to the db in json
     jQuery.ajax({
       type: "POST",
-      url: `https://fierce-brook-27687.herokuapp.com/items.json`,
+      url: `localhost:3030/items.json`,
       data: JSON.stringify({
           item: newState
       }),
@@ -86,7 +86,7 @@ class Item extends React.Component {
   }
 
 // ########DESTROY#############################################################
-  destroyMe(event) {
+  onDestroy(event) {
     event.preventDefault();
     console.log("Destroy clicked!");
 
@@ -101,27 +101,26 @@ class Item extends React.Component {
 
     .done(function(data) {
       console.log(data);
-      console.log("Deleted! :)");
+      console.log("Gone bitch");
     })
 
     .fail(function(error) {
       console.log(error);
     })
 
-    .always(function() {
-      component.props.onDestroy();
-    });
+    .always(function(event) {
+        component.props.onDestroy();
+      });
   }
   // #####################################################################
     render() {
       console.log(this.state);
         return (
           <li>
-            <a href="#" className="destroy pull-right" onClick={this.destroyMe.bind(this)}>x</a>
+            <a href="#" className="destroy pull-right" onClick={this.onDestroy.bind(this)}>x</a>
             {this.state.id}
             {this.state.name}
             {this.state.description}
-
           </li>
         );
     }
