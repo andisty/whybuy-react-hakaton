@@ -116,6 +116,17 @@ class Item extends React.Component {
     render() {
       console.log(this.state);
         return (
+<<<<<<< HEAD
+          <li>
+            <a href="#" className="destroy pull-right" onClick={this.onDestroy.bind(this)}>x</a>
+            {this.state.id}
+            {this.state.name}
+||||||| merged common ancestors
+          <li>
+            <a href="#" className="destroy pull-right" onClick={this.destroyMe.bind(this)}>x</a>
+            {this.state.id}
+            {this.state.name}
+=======
           <div className="row">
         <div className="col s12 m7">
           <div className="card">
@@ -125,7 +136,14 @@ class Item extends React.Component {
             </div>
             <div className="card-content">
             <p>
+>>>>>>> styling
             {this.state.description}
+<<<<<<< HEAD
+          </li>
+||||||| merged common ancestors
+
+          </li>
+=======
             </p>
             </div>
            <div className="card-action">
@@ -135,6 +153,7 @@ class Item extends React.Component {
          </div>
        </div>
      </div>
+>>>>>>> styling
         );
     }
 }
