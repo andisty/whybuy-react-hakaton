@@ -116,13 +116,25 @@ class Item extends React.Component {
     render() {
       console.log(this.state);
         return (
-          <li>
-            <a href="#" className="destroy pull-right" onClick={this.destroyMe.bind(this)}>x</a>
-            {this.state.id}
-            {this.state.name}
+          <div className="row">
+        <div className="col s12 m7">
+          <div className="card">
+            <div className="card-image">
+              <img src="http://nationkart.com/blog/wp-content/uploads/2015/09/tools.jpg" />
+              <span className="card-title">{this.state.name}</span>
+            </div>
+            <div className="card-content">
+            <p>
             {this.state.description}
-
-          </li>
+            </p>
+            </div>
+           <div className="card-action">
+             <a href="#">This is a link</a>
+             <a href="#" className="destroy pull-right" onClick={this.destroyMe.bind(this)}>Cancel Item</a>
+           </div>
+         </div>
+       </div>
+     </div>
         );
     }
 }
